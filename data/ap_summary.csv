@@ -1,0 +1,11 @@
+parameter,value
+X_max,100000000
+n_primes,5761455
+primorial_3,6
+primorial_4,6
+primorial_5,30
+N3_Delta6,110392
+N4_Delta6,9330
+N5_Delta30,5523
+Dmax_dense_scan,1512
+offlattice_nonzero_count,0
