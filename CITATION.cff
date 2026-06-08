@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite it as below."
+title: "6N-ap-resonance: Prime Arithmetic Progressions as a Lattice Resonance (Part XXX)"
+authors:
+  - family-names: Chen
+    given-names: Ruqing
+    affiliation: "GUT Geoservice Inc., Montreal, Quebec, Canada"
+    email: ruqing@hotmail.com
+date-released: 2026-06-08
+license: MIT
+repository-code: "https://github.com/Ruqing1963/6N-ap-resonance"
+abstract: >
+  Code and measured sieve data for the count of k-term arithmetic progressions of primes on the 6N
+  skeleton, as a function of the common difference Delta. Exhibits the admissibility selection rule
+  (counts extinguished off the primorial sublattice) and the resonance enhancement law (q-1)/(q-k)
+  per prime q>k dividing Delta, the relative Hardy-Littlewood AP singular series, verified to ~1%
+  across k=3,4,5 at X=10^8. The Green-Tao theorem is the backdrop; no infinitude claim is made.

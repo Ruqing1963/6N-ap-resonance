@@ -1,0 +1,227 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{placeins}
+\usepackage{booktabs}
+\usepackage[expansion=false]{microtype}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+
+\newcommand{\Sing}{\mathfrak{S}}
+
+\title{\bf Prime Arithmetic Progressions as a Lattice Resonance:\\
+the Admissibility Selection Rule and the\\
+Singular-Series Enhancement Spectrum%
+\thanks{Code and measured data: \url{https://github.com/Ruqing1963/6N-ap-resonance}}}
+\author{Ruqing Chen\\
+\small GUT Geoservice Inc., Montreal, Quebec, Canada\\
+\small \texttt{ruqing@hotmail.com}}
+\date{June 8, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We measure the count of $k$-term arithmetic progressions of primes as a function of the common
+difference $\Delta$, on the $6N$ skeleton, sieving all primes to $X=10^{8}$. Viewed as a function of
+$\Delta$ the count $N_k(\Delta)$ behaves exactly like a diffraction spectrum. (i) A sharp
+\emph{selection rule}: $N_k(\Delta)$ is identically zero unless $\Delta$ is divisible by the primorial
+$\prod_{p\le k}p$. We verify this as an absolute extinction---scanning every $\Delta\le1512$ for
+$k=3$, the number of admissible-looking off-lattice progressions found is exactly zero. (ii) On the
+admissible lattice $\Delta\in\mathrm{primorial}(k)\cdot\mathbb{Z}$, a clean \emph{resonance
+enhancement}: each additional prime $q>k$ dividing $\Delta$ multiplies the count by the universal
+factor $(q-1)/(q-k)$. This is the relative Hardy--Littlewood singular series
+$\Sing_k(\Delta)=\prod_p\bigl(1-\nu_p(\Delta)/p\bigr)/(1-1/p)^{k}$, with
+$\nu_p(\Delta)=1$ if $p\mid\Delta$ and $\min(k,p)$ otherwise; we verify it against the data to
+$\lesssim1\%$ across $k=3,4,5$ (e.g.\ at $k=3$, $\Delta=2310$ gives a measured $3.768$ against the
+predicted $3.750$; at $k=4$, $\Delta=210$ gives $8.11$ against $8.00$). Both the extinction rule and
+the $(q-1)/(q-k)$ enhancement are exact consequences of admissibility; what the experiment adds is the
+spectral presentation and the high-precision verification at $X=10^{8}$, together with the unified
+per-prime resonance law across $k$. We make no claim about the existence of arbitrarily long
+progressions: the Green--Tao theorem is the (untouchable) backdrop, not a target. As throughout, this
+is a measurement, not a theorem; the Hardy--Littlewood heuristic is taken as input.
+\end{abstract}
+
+\section{Introduction}
+That the primes contain arbitrarily long arithmetic progressions is the Green--Tao theorem
+\cite{GT}, one of the central results of the century, proved by ergodic and transference methods whose
+arithmetic content is famously hard to picture. The infinitude of three-term progressions is older,
+due to van der Corput \cite{vdC}; the conjectural asymptotic count of $k$-term progressions is the
+Hardy--Littlewood prime-tuple heuristic \cite{HL} specialised to the constellation
+$\{0,\Delta,2\Delta,\dots,(k-1)\Delta\}$.
+
+This programme has spent its recent papers measuring the local structure of one constellation after
+another: the twin pair (Parts I, XXIII), the $\omega$-conditioned second moment (Part XXVI), the
+twin-enrichment closed form (Part XXVIII), and the twin pair correlation governing the short-interval
+variance (Part XXIX) \cite{PXXIX}. The pair correlation of Part XXIX is the $4$-tuple singular series
+read as a function of separation. The present paper takes the natural next step: from two points to a
+$k$-point constellation strung along an arithmetic progression, read as a function of the common
+difference $\Delta$.
+
+The result is best stated in the language of diffraction. Hold $k$ fixed and vary $\Delta$. The count
+$N_k(\Delta)$ of $k$-term prime progressions with common difference $\Delta$ and first term up to $X$
+shows two features of a lattice spectrum: a hard \emph{extinction rule} that forbids all $\Delta$ off
+a primorial sublattice, and a \emph{resonance enhancement} on that sublattice with sharp, quantised
+peaks. Both are exact consequences of admissibility, and both are what we measure. We do not touch the
+asymptotic existence of long progressions; we map the finite-$X$ spectrum and verify its arithmetic.
+
+\section{Setup: the AP constellation and its singular series}
+A $k$-term arithmetic progression of primes is $p,\,p+\Delta,\,\dots,\,p+(k-1)\Delta$, all prime,
+with common difference $\Delta\ge1$. We sieve all primes to $X=10^{8}$ ($5{,}761{,}455$ primes) and
+count, for each $\Delta$,
+\[
+N_k(\Delta)=\#\bigl\{\,p\ge5\ \text{prime}\;:\;p+j\Delta\ \text{prime for }j=1,\dots,k-1,\ p+(k-1)\Delta\le X\,\bigr\}.
+\]
+The Hardy--Littlewood heuristic for the constellation $H_\Delta=\{0,\Delta,\dots,(k-1)\Delta\}$ gives
+$N_k(\Delta)\sim \Sing_k(\Delta)\,c_k\,X/\log^k X$ for $\Delta\ll X$, with the $\Delta$-dependence
+carried entirely by the singular series
+\begin{equation}
+\Sing_k(\Delta)=\prod_p \frac{1-\nu_p(\Delta)/p}{(1-1/p)^{k}},\qquad
+\nu_p(\Delta)=\#\{\,H_\Delta \bmod p\,\}=
+\begin{cases}1,& p\mid\Delta,\\[2pt]\min(k,p),& p\nmid\Delta.\end{cases}
+\label{eq:Sk}
+\end{equation}
+The residue count $\nu_p$ is elementary: if $p\mid\Delta$ all terms collapse to one residue; if
+$p\nmid\Delta$ the terms are $\Delta\cdot\{0,1,\dots,k-1\}\bmod p$, which are $\min(k,p)$ distinct
+values. Because $N_k(\Delta)$ counts $\sim\!X$ starting points regardless of $\Delta$ (for
+$\Delta\ll X$), the ratio of counts at two common differences is, to leading order, the ratio of their
+singular series---which is what we measure.
+
+\section{The selection rule: extinction off the primorial lattice}
+Whenever $p\le k$ and $p\nmid\Delta$, the $k\ge p$ terms cover \emph{every} residue mod $p$, so
+$\nu_p=p$ and the local factor $(1-\nu_p/p)=0$ annihilates $\Sing_k$. Hence:
+
+\begin{proposition}[Admissibility selection rule]
+$\Sing_k(\Delta)\ne0$ only if $\Delta$ is divisible by every prime $p\le k$, i.e.\
+$\Delta\equiv0 \pmod{\mathrm{primorial}(k)}$, where $\mathrm{primorial}(k)=\prod_{p\le k}p$.
+\end{proposition}
+
+For $k=3$ and $k=4$ the lattice is $6\mathbb{Z}$; for $k=5$ it is $30\mathbb{Z}$. The arithmetic
+reason is transparent: a term divisible by an unrequired small prime $p$ would have to equal $p$
+itself to stay prime, which only the finitely many small progressions can do. Everything large is
+extinguished. Figure~\ref{fig:fig1}(A) shows the measured $3$-AP spectrum as a comb: nonzero only on
+multiples of $6$, dark between. The extinction is not approximate. Scanning \emph{every}
+$\Delta\le1512$ for $k=3$, the number of off-lattice ($6\nmid\Delta$) common differences carrying a
+single prime progression with $p\ge5$ is exactly zero. This is the lattice selection rule made
+literal.
+
+\section{The resonance enhancement spectrum}
+On the admissible lattice the spectrum is far from flat. Adding a prime factor $q>k$ to $\Delta$
+changes the local factor at $q$ from the generic $(1-k/q)/(1-1/q)^k$ (since $\nu_q=k$ when $q\ge k$
+and $q\nmid\Delta$) to $(1-1/q)/(1-1/q)^k$ (since $\nu_q=1$ when $q\mid\Delta$). The ratio is the
+universal enhancement
+\begin{equation}
+\frac{\Sing_k(\Delta\cdot q)}{\Sing_k(\Delta)}=\frac{1-1/q}{1-k/q}=\frac{q-1}{q-k},
+\qquad q>k,\ q\nmid\Delta .
+\label{eq:gain}
+\end{equation}
+Each extra prime $q$ dividing $\Delta$ multiplies the count by $(q-1)/(q-k)$: for $k=3$ a factor
+$(q-1)/(q-3)$ (so $q=5$ doubles it, $q=7$ gives $\times1.5$); for $k=4$ a factor $(q-1)/(q-4)$ (so
+$q=5$ \emph{quadruples} it); for $k=5$ a factor $(q-1)/(q-5)$ over primes $q\ge7$. The primorial of
+$k$ is the price of admission; every prime above $k$ is a resonance.
+
+Table~\ref{tab:res} and Figures~\ref{fig:fig1}(B), \ref{fig:fig2} put~\eqref{eq:gain} against the
+data. The agreement is uniform to $\lesssim1\%$. At $k=3$: $\Delta=30$ (gains $5$) measures
+$2.011$ versus $2.000$; $\Delta=210$ (gains $5,7$) measures $3.016$ versus $3.000$; $\Delta=2310$
+(gains $5,7,11$) measures $3.768$ versus $3.750$. At $k=4$ the steeper law shows plainly: $\Delta=30$
+measures $4.065$ versus $4.000$, $\Delta=2310$ measures $11.54$ versus $11.43$. At $k=5$, requiring
+$30\mid\Delta$, $\Delta=210$ (gains $7$) measures $2.962$ versus $3.000$ and $\Delta=2310$ (gains
+$7,11$) measures $4.955$ versus $5.000$. The enhancement quantises the spectrum into the discrete
+bands visible in Figure~\ref{fig:fig1}(B), and the single-prime gains trace the curves
+$(q-1)/(q-k)$ exactly (Fig.~\ref{fig:fig2}(B)).
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{rrlrcc}
+\toprule
+$k$ & $\Delta$ & primes $q>k$, $q\mid\Delta$ & $N_k(\Delta)$ & measured ratio & predicted $\prod\frac{q-1}{q-k}$\\
+\midrule
+3 & 6    & ---     & 110392 & 1.0000 & 1.0000\\
+3 & 30   & 5       & 222008 & 2.0111 & 2.0000\\
+3 & 42   & 7       & 166258 & 1.5061 & 1.5000\\
+3 & 66   & 11      & 138039 & 1.2504 & 1.2500\\
+3 & 210  & 5,7     & 332970 & 3.0163 & 3.0000\\
+3 & 330  & 5,11    & 277815 & 2.5166 & 2.5000\\
+3 & 2310 & 5,7,11  & 415990 & 3.7683 & 3.7500\\
+\midrule
+4 & 6    & ---     & 9330   & 1.0000 & 1.0000\\
+4 & 30   & 5       & 37927  & 4.0651 & 4.0000\\
+4 & 210  & 5,7     & 75689  & 8.1124 & 8.0000\\
+4 & 2310 & 5,7,11  & 107656 & 11.5387& 11.4286\\
+\midrule
+5 & 30   & ---     & 5523   & 1.0000 & 1.0000\\
+5 & 210  & 7       & 16359  & 2.9620 & 3.0000\\
+5 & 330  & 11      & 9060   & 1.6404 & 1.6667\\
+5 & 2310 & 7,11    & 27367  & 4.9551 & 5.0000\\
+\bottomrule
+\end{tabular}
+\caption{The resonance enhancement \eqref{eq:gain} against measured $k$-AP counts at $X=10^{8}$. The
+ratio is relative to the primorial base ($\Delta=6$ for $k=3,4$; $\Delta=30$ for $k=5$). Agreement is
+$\lesssim1\%$; the $k=5$ deviations are the largest because the base count is only $5{,}523$
+(Poisson error $\approx1.3\%$).}
+\label{tab:res}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{p30_fig1.pdf}
+\caption{(A) The $3$-AP diffraction spectrum: $N_3(\Delta)$ versus $\Delta$ is a comb supported only on
+multiples of $6$, extinguished elsewhere, with resonance peaks at $\Delta=30$ ($\times2$) and
+$\Delta=210$ ($\times3$). (B) The admissible sub-spectrum $N_3(\Delta)/N_3(6)$ over all multiples of
+$6$ (blue) against the relative Hardy--Littlewood singular series \eqref{eq:Sk} (red); the enhancement
+quantises into discrete bands.}
+\label{fig:fig1}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{p30_fig2.pdf}
+\caption{(A) The unified resonance law: measured $N_k(\Delta)/N_k(\mathrm{primorial})$ against the
+predicted product $\prod_{q\mid\Delta,\,q>k}(q-1)/(q-k)$ for $k=3,4,5$, on the diagonal. (B) The
+single-prime gain $(q-1)/(q-k)$ as a function of $q$ for each $k$ (curves), with the measured
+single-prime points (markers) lying on them.}
+\label{fig:fig2}
+\end{figure}
+
+\FloatBarrier
+\section{Scope and honest ledger}
+The experiment renders the count of prime arithmetic progressions, as a function of the common
+difference, as a lattice spectrum with two exact features. The \emph{selection rule}---extinction off
+the primorial sublattice $\mathrm{primorial}(k)\cdot\mathbb{Z}$---is admissibility, verified as a
+literal zero for every off-lattice $\Delta\le1512$ at $k=3$. The \emph{resonance enhancement}---the
+universal per-prime factor $(q-1)/(q-k)$ for primes $q>k$ dividing $\Delta$---is the relative
+Hardy--Littlewood singular series, verified to $\lesssim1\%$ across $k=3,4,5$ and unified across $k$ by
+a single closed form.
+
+Neither feature is a new theorem; both follow from \eqref{eq:Sk}. What this paper contributes is the
+spectral framing and the precision check at $X=10^{8}$, in the measurement spirit of the series: the
+same singular-series machinery that gave the twin pair correlation of Part XXIX, here read along the
+progression rather than across the pair. We are explicit about the boundary. The Green--Tao
+theorem---that progressions of every length occur---concerns asymptotics no sieve can reach; at
+$X=10^{8}$ the longest progressions are short, and our $k=5$ counts are already in the thousands. We
+make no statement about the existence of long progressions, only about the arithmetic of the spectrum
+where we can see it. Everything here equals the discrete sieve count, takes the Hardy--Littlewood
+heuristic as input, and makes no claim about the infinitude of any constellation.
+
+\paragraph{Data and code availability.} The prime sieve to $X=10^{8}$, the dense $3$-AP spectrum scan,
+the cross-$k$ resonance table, and the figure scripts are openly available at
+\url{https://github.com/Ruqing1963/6N-ap-resonance}.
+
+\begin{thebibliography}{9}
+\bibitem{HL} G.~H.~Hardy, J.~E.~Littlewood, \emph{Some problems of `Partitio Numerorum'; III}, Acta Math.\ \textbf{44} (1923), 1--70.
+\bibitem{vdC} J.~G.~van der Corput, \emph{\"Uber Summen von Primzahlen und Primzahlquadraten}, Math.\ Ann.\ \textbf{116} (1939), 1--50.
+\bibitem{GT} B.~Green, T.~Tao, \emph{The primes contain arbitrarily long arithmetic progressions}, Ann.\ of Math.\ \textbf{167} (2008), 481--547.
+\bibitem{PI} R.~Chen, \emph{Conditional density on the 6N skeleton} (Part I), Zenodo, doi:10.5281/zenodo.20470367 (2026).
+\bibitem{PXXIII} R.~Chen, \emph{Phase transition kinetics and topological event horizons at extreme $\omega$} (Part XXIII), Zenodo, doi:10.5281/zenodo.20586919 (2026).
+\bibitem{PXXVI} R.~Chen, \emph{The second moment of $\omega$ under twin-centre conditioning on the 6N skeleton} (Part XXVI), Zenodo, doi:10.5281/zenodo.20593654 (2026).
+\bibitem{PXXVIII} R.~Chen, \emph{Auditing the wind tunnel: the twin-enrichment closed form at reachable $\omega$} (Part XXVIII), Zenodo, doi:10.5281/zenodo.20596631 (2026).
+\bibitem{PXXIX} R.~Chen, \emph{Twin counts in short intervals: singular-series rigidity and the density-gradient variance} (Part XXIX), Zenodo, doi:10.5281/zenodo.20597725 (2026).
+\bibitem{review} R.~Chen, \emph{Arithmetic geodynamics on the 6N skeleton: a review of Parts I--XIX}, Zenodo, doi:10.5281/zenodo.20585301 (2026).
+\end{thebibliography}
+
+\end{document}
